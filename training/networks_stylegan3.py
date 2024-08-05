@@ -80,7 +80,7 @@ class FullyConnectedLayer(torch.nn.Module):
         self.in_features = in_features
         self.out_features = out_features
         self.activation = activation
-        self.weight = torch.nn.Parameter(torch.randn([out_features, in_features]) * (weight_init / lr_multiplier))
+        self.weight = torch.nn.Parameter(torch.randn([out_features, in_features]) * (weight_init / lr_multiplier)) #这里多乘的weight_init/lr_multiplier是为了什么
         bias_init = np.broadcast_to(np.asarray(bias_init, dtype=np.float32), [out_features])
         self.bias = torch.nn.Parameter(torch.from_numpy(bias_init / lr_multiplier)) if bias else None
         self.weight_gain = lr_multiplier / np.sqrt(in_features)
